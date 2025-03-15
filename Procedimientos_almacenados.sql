@@ -30,10 +30,12 @@ EXCEPTION
 END SP_HOSPITAL_REGISTRAR;
 
 -- EJECUCIÓN DEL PROCEDIMIENTO
-BEGIN
-    SP_HOSPITAL_REGISTRAR(1, 'Hospital Nacional Arzobispo Loayza', 10, 987.45, 1,1,2);
+BEGIN 
+SP_HOSPITAL_REGISTRAR(4, 'Hospital Belen', 10, 967.79, 2,4,3);
 END;
-
+BEGIN
+   SP_HOSPITAL_REGISTRAR(3,'Hospital Regional del Cusco',8,997.75,2,3,2);
+END;
 
 -- PROCEDIMIENTO ALMACENADO PARA  ACTUALIZAR UN HOSPITAL 
 CREATE OR REPLACE PROCEDURE SP_HOSPITAL_ACTUALIZAR(
@@ -89,7 +91,8 @@ BEGIN
         Area = p_Area, 
         idSede = p_idSede, 
         idGerente = p_idGerente, 
-        idCondicion = p_idCondicion
+        idCondicion = p_idCondicion,
+        fechaModificacion = SYSDATE 
     WHERE idHospital = p_idHospital;
     DBMS_OUTPUT.PUT_LINE('Hospital actualizado correctamente.');
 EXCEPTION
@@ -101,9 +104,11 @@ END SP_HOSPITAL_ACTUALIZAR;
 
 -- EJECUCIÓN DEL PROCEDIMIENTO
 BEGIN
-    SP_HOSPITAL_ACTUALIZAR(1,1, 'Hospital Nacional Arzobispo Loayza', 15, 987.70, 1,1,2);
+    SP_HOSPITAL_ACTUALIZAR(1,1, 'Hospital Nacional Arzobispo Loayza', 11, 987.78, 1,1,2);
 END;
-
+BEGIN
+    SP_HOSPITAL_ACTUALIZAR(1,1, 'Hospital Goyeneche', 10, 987.78, 1,1,2);
+END;
 
 -- PROCEDIMIENTO ALMACENADO PARA ELIMINAR UN  HOSPITAL 
 CREATE OR REPLACE PROCEDURE SP_HOSPITAL_ELIMINAR(
@@ -130,7 +135,7 @@ END SP_HOSPITAL_ELIMINAR;
 
 -- EJECUCIÓN DEL PROCEDIMIENTO
 BEGIN
-    SP_HOSPITAL_ELIMINAR(3);
+    SP_HOSPITAL_ELIMINAR(2);
 END;
 
 -- PROCEDIMIENTO ALMACENADO PARA LISTAR HOSPITALES
@@ -170,9 +175,13 @@ EXCEPTION
 END SP_HOSPITAL_LISTAR;
 
 -- EJECUCIÓN DEL PROCEDIMIENTO
+-- Lince
+-- Cayma
+-- San Jerónimo
 BEGIN
-    SP_HOSPITAL_LISTAR('hospital regional' , 'san jerónimo', null);
+    SP_HOSPITAL_LISTAR(null, 'san jerónimo', null);
 END;
+
 
 
 
