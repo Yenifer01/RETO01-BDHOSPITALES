@@ -1,0 +1,74 @@
+<app-navbar></app-navbar>
+<div class="card" style="width: 1200px; margin: auto; margin-top: 20px;">
+    <h5 class="text-center text-white fondo-header">Listado de Hospitales</h5>
+    <div class="card-header">
+        <div class="d-flex gap-2 align-items-center">
+            <a class="btn btn-success" routerLink="/registro-hospitales">Agregar [+]</a>
+            <form class="d-flex gap-2"(submit)="buscarHospitales($event)">
+                <select class="form-select" [(ngModel)]="distritoSeleccionado" (ngModelChange)="filtrarHospitales()" name="distrito">
+                    <option [ngValue]="null">Distrito</option>
+                    <option *ngFor="let distrito of distritos" [ngValue]="distrito.iddistrito">
+                        {{ distrito.descdistrito }}
+                    </option>
+                </select>
+                <select class="form-select" [(ngModel)]="sedeSeleccionada" (ngModelChange)="filtrarHospitales()" name="sede">
+                    <option [ngValue]="null">Sede</option>
+                    <option *ngFor="let sede of sedes" [ngValue]="sede.idsede">
+                        {{ sede.descsede }}
+                    </option>
+                </select>
+                <select class="form-select" [(ngModel)]="condicionSeleccionada" (ngModelChange)="filtrarHospitales()" name="condicion">
+                    <option [ngValue]="null">Condición</option>
+                    <option *ngFor="let condicion of condiciones" [ngValue]="condicion.idcondicion">
+                        {{condicion.desccondicion}}
+                    </option>
+                </select>
+
+                <input class="form-control" type="text" [(ngModel)]="filtroTexto"  name="busqueda" placeholder="Buscar...">
+    
+                <button  class="btn btn-primary" (click)="filtrarPorNombreOGerente()">Buscar</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead class="table-dark text-white">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Antigüedad</th>
+                    <th>Área</th>
+                    <th>Distrito</th>
+                    <th>Sede</th>
+                    <th>Gerente</th>
+                    <th>Condición</th>
+                    <th>Fecha de Registro</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let hospital of hospitalesFiltrados">
+                    <td>{{ hospital.idHospital }}</td>
+                    <td>{{ hospital.nombre }}</td>
+                    <td>{{ hospital.antiguedad }}</td>
+                    <td>{{ hospital.area }}</td>
+                    <td>{{ hospital.descDistrito}}</td>
+                    <td>{{ hospital.descSede}}</td>
+                    <td>{{ hospital. descGerente}}</td>
+                    <td>{{ hospital.descCondicion}}</td>
+                    <td>{{ hospital.fechaRegistro}}</td>
+                    <td class="d-flex gap-2">
+                        <button class="btn btn-primary"(click)="editarHospital(hospital)">Editar</button>
+                        <button class="btn btn-danger" (click)="eliminarHospital(hospital.idHospital)">Eliminar</button>
+                    </td>                    
+                </tr>
+                <tr *ngIf="hospitalesFiltrados.length === 0">
+                    <td colspan="10" class="text-center text-danger">
+                        No se han encontrado datos con los filtros ingresados.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

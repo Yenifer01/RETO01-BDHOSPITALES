@@ -1,0 +1,90 @@
+<app-navbar></app-navbar>
+<form [formGroup]="hospitalForm" (ngSubmit)="guardarHospital()" class="container">
+    <div class="card" style="width: 1200px; margin: auto; margin-top: 20px;">
+        <div class="card-header text-white text-center">
+            <h5 class="m-1">Registro de Hospitales</h5>
+        </div>
+        <div class="card-body p-4">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="fw-bold">Nombre <span class="text-danger">*</span></label>
+                        <input formControlName="nombre" class="form-control border-2 rounded-3" placeholder="Ingrese el nombre" />
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="fw-bold">Antigüedad <span class="text-danger">*</span></label>
+                        <input formControlName="antiguedad" type="number" class="form-control border-2 rounded-3" placeholder="Ingrese la antigüedad" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="fw-bold">Área <span class="text-danger">*</span></label>
+                        <input formControlName="area" type="number" class="form-control border-2 rounded-3" placeholder="Ingrese el área">
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label for="distrito" class="fw-bold">Distrito <span class="text-danger">*</span></label>
+                        <select formControlName="idDistrito" class="form-select">
+                            <option [ngValue]="null">Selecciona un distrito</option>
+                            <option *ngFor="let distrito of distritos" [ngValue]="distrito.iddistrito">
+                                {{ distrito.descdistrito }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label class="fw-bold">Sede <span class="text-danger">*</span></label>
+                        <select formControlName="idSede" class="form-select">
+                            <option [ngValue]="null">Selecciona una Sede</option>
+                            <option *ngFor="let sede of sedes" [ngValue]="sede.idsede">
+                                {{sede.descsede}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="fw-bold">Gerente <span class="text-danger">*</span></label>
+                        <select formControlName="idGerente" class="form-select">
+                            <option [ngValue]="null">Selecciona un Gerente</option>
+                            <option *ngFor="let gerente of gerentes" [ngValue]="gerente.idgerente">
+                                {{gerente.descgerente}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label class="fw-bold">Condición <span class="text-danger">*</span></label>
+                        <select formControlName="idCondicion" class="form-select">
+                            <option [ngValue]="null">Selecciona una Condición</option>
+                            <option *ngFor="let condicion of condiciones" [ngValue]="condicion.idcondicion">
+                                {{condicion.desccondicion}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end mt-4">
+                <button class="btn btn-success me-2 px-4 py-2 shadow-sm" type="submit">
+                    <i class="fas fa-save"></i> Guardar
+                </button>
+                <a class="btn btn-danger px-4 py-2 shadow-sm" routerLink="/lista-hospitales">
+                    <i class="fas fa-times"></i> Cancelar
+                </a>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,7 @@
+.fondo-header{
+    background: linear-gradient(to right, #007bff, #28a745); /* Azul a verde */
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.5rem;
+}
