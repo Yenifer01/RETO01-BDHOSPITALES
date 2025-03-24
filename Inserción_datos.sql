@@ -2,8 +2,8 @@
 INSERT INTO GERENTE (descGerente) VALUES ('Juan Rodriguez');
 INSERT INTO GERENTE (descGerente) VALUES ('María Gómez');
 INSERT INTO GERENTE (descGerente) VALUES ('Carlos Ramírez');
-INSERT INTO GERENTE (descGerente) VALUES ('Ana López');
-INSERT INTO GERENTE (descGerente) VALUES ('Luis Fernández');
+INSERT INTO GERENTE (descGerente) VALUES ('Lorena Laiza');
+INSERT INTO GERENTE (descGerente) VALUES ('Matilde Fernández');
 INSERT INTO GERENTE (descGerente) VALUES ('Elena Vargas');
 
 -- INSERT PARA LA TABLA CONDICIÓN
